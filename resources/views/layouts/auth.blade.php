@@ -9,7 +9,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SIPETA') }}</title>
+    <title>{{ config('app.name', '') }}</title>
+    <meta name="description" content="{{ env('APP_NAME') }}">
+    <meta name="author" content="{{ env('APP_NAME') }}">
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -24,7 +26,8 @@
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
 </head>
 
-<body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
+<body class="min-vh-100 d-flex justify-content-center align-items-center"
+    style="background-image: url('{{ asset('img/background-kb.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     @yield('main-content')
 

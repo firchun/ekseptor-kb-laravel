@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SIPETA') }}</title>
+    <title>{{ config('app.name', '') }}</title>
+    <meta name="description" content="{{ env('APP_NAME') }}">
+    <meta name="author" content="{{ env('APP_NAME') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

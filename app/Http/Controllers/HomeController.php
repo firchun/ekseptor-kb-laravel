@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlatKontrasepsi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $this->middleware('auth');
         $users = User::count();
 
         $widget = [
@@ -32,5 +34,18 @@ class HomeController extends Controller
         ];
 
         return view('home', compact('widget'));
+    }
+    public function homepage()
+    {
+        return view('welcome');
+    }
+    public function detail($kode_alat)
+    {
+        $alat = AlatKontrasepsi::where('kode_alat', $kode_alat)->first();
+        $data = [
+            'title' => $alat->nama_alat,
+            'alat' => $alat
+        ];
+        return view('detail', $data);
     }
 }
