@@ -41,11 +41,11 @@ class LaporanController extends Controller
 
             $ekseptors = Ekseptor::with(['puskesmas', 'alat'])
                 ->whereYear('created_at', $tahun)
-                ->whereMonth('created_at', $bulan)
-                ->get();
+                ->whereMonth('created_at', $bulan);
             if (Auth::user()->role != 'Admin') {
                 $ekseptors->where('id_puskesmas', Auth::user()->id_puskesmas);
             }
+            $ekseptors->get();
             $oap = $ekseptors->where('jenis_ras', 'OAP')->count();
             $non_oap = $ekseptors->where('jenis_ras', 'NON-OAP')->count();
 

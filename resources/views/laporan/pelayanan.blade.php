@@ -49,16 +49,22 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="mb-3">
-                                    <select class="form-control" name="puskesmas" id="puskesmas">
-                                        <option value="">Pilih Puskesmas</option>
-                                        @foreach (App\Models\Puskesmas::all() as $puskesmas)
-                                            <option value="{{ $puskesmas->id }}">{{ $puskesmas->nama_puskesmas }}</option>
-                                        @endforeach
-                                    </select>
+                            @if (Auth::user()->role == 'Admin')
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <select class="form-control" name="puskesmas" id="puskesmas">
+                                            <option value="">Pilih Puskesmas</option>
+                                            @foreach (App\Models\Puskesmas::all() as $puskesmas)
+                                                <option value="{{ $puskesmas->id }}">{{ $puskesmas->nama_puskesmas }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <input type="hidden" name="puskesmas" id="puskesmas"
+                                    value="{{ Auth::user()->id_puskesmas }}">
+                            @endif
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-success" name="action" value="excel"><i
                                         class="fa fa-file-excel"></i> Excel</button>

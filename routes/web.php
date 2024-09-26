@@ -33,6 +33,7 @@ Auth::routes(['register' => false, 'reset' => false]);
 
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/akseptor_chart', 'HomeController@akseptor_chart');
 
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');

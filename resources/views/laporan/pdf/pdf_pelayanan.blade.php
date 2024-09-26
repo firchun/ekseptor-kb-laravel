@@ -121,7 +121,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\kelurahan::where('id_puskesmas', $puskesmas)->get() as $item)
+            @foreach (App\Models\Kelurahan::where('id_puskesmas', $puskesmas)->get() as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td></td>
@@ -138,27 +138,101 @@
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('kb_aktif') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+                            $jumlah = App\Models\Sasaran::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('jumlah');
+                            $kb_aktif = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('kb_aktif');
+                            $persentase_kb_aktif = 0;
+                            if ($jumlah > 0) {
+                                $persentase_kb_aktif = ($kb_aktif / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_kb_aktif, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('komplikasi') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+
+                            $komplikasi = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('komplikasi');
+                            $persentase_komplikasi = 0;
+                            if ($jumlah > 0) {
+                                $persentase_komplikasi = ($komplikasi / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_komplikasi, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('kegagalan') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+
+                            $kegagalan = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('kegagalan');
+                            $persentase_kegagalan = 0;
+                            if ($jumlah > 0) {
+                                $persentase_kegagalan = ($kegagalan / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_kegagalan, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('dropout') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+
+                            $dropout = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('dropout');
+                            $persentase_dropout = 0;
+                            if ($jumlah > 0) {
+                                $persentase_dropout = ($dropout / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_dropout, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('pus_miskin') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+
+                            $pus_miskin = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('pus_miskin');
+                            $persentase_pus_miskin = 0;
+                            if ($jumlah > 0) {
+                                $persentase_pus_miskin = ($pus_miskin / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_pus_miskin, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('pus_4t') }}
                     </td>
-                    <td>0</td>
+                    <td>
+                        @php
+
+                            $pus_4t = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
+                                ->sum('pus_4t');
+                            $persentase_pus_4t = 0;
+                            if ($jumlah > 0) {
+                                $persentase_pus_4t = ($pus_4t / $jumlah) * 100;
+                            }
+                        @endphp
+                        {{ number_format($persentase_pus_4t, 2, '.', '') }}
+                    </td>
                     <td>
                         {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
