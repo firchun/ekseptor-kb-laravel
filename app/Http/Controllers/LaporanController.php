@@ -32,20 +32,19 @@ class LaporanController extends Controller
         $action = $request->input('action');
         $tahun = $request->input('tahun');
         $bulan = $request->input('bulan');
-        if (empty($bulan) || empty($tahun)) {
+        $puskesmas = $request->input('puskesmas');
+        if (empty($bulan) || empty($tahun) || empty($puskesmas)) {
             return back()->with('danger', 'Harap mengisi form');
         }
         if ($action == 'excel') {
-            return Excel::download(new EkseptorExport($tahun, $bulan), 'laporan-ekseptor-' . $bulan . $tahun . '.xlsx');
+            return Excel::download(new EkseptorExport($tahun, $bulan, $puskesmas), 'laporan-ekseptor-' . $bulan . $tahun . '.xlsx');
         } else {
 
             $ekseptors = Ekseptor::with(['puskesmas', 'alat'])
                 ->whereYear('created_at', $tahun)
-                ->whereMonth('created_at', $bulan);
-            if (Auth::user()->role != 'Admin') {
-                $ekseptors->where('id_puskesmas', Auth::user()->id_puskesmas);
-            }
-            $ekseptors->get();
+                ->whereMonth('created_at', $bulan)
+                ->where('id_puskesmas', $puskesmas)
+                ->get();
             $oap = $ekseptors->where('jenis_ras', 'OAP')->count();
             $non_oap = $ekseptors->where('jenis_ras', 'NON-OAP')->count();
 

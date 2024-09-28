@@ -66,8 +66,6 @@
                                     value="{{ Auth::user()->id_puskesmas }}">
                             @endif
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-success" name="action" value="excel"><i
-                                        class="fa fa-file-excel"></i> Excel</button>
                                 <button type="submit" class="btn btn-danger" name="action" value="pdf"><i
                                         class="fa fa-file-pdf"></i> PDF</button>
                             </div>

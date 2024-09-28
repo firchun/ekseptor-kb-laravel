@@ -27,7 +27,11 @@
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
 </head>
 
-<body id="page-top">
+<body id="page-top"
+    style="background-image: url('{{ asset('img/background-kb.jpeg') }}'); 
+background-size: cover; 
+background-position: center; 
+">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -36,7 +40,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: rgba(255, 255, 255, 0.878);">
 
             <!-- Main Content -->
             <div id="content">
@@ -97,13 +101,13 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b
-                                        class="text-primary">{{ Auth::user()->name }}</b><br>
+                                        style="color: #FF1493;"">{{ Auth::user()->name }}</b><br>
                                     @if (Auth::user()->role != 'Admin')
                                         <small>{{ Auth::user()->puskesmas->nama_puskesmas }}</small>
                                     @endif
                                 </span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->name[0] }}"></figure>
+                                    data-initial="{{ Auth::user()->name[0] }}" style="background: #FF1493;"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -128,8 +132,8 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     @yield('main-content')
+
 
                 </div>
                 <!-- /.container-fluid -->

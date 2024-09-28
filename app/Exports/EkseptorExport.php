@@ -16,11 +16,13 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
 {
     protected $tahun;
     protected $bulan;
+    protected $puskesmas;
 
-    public function __construct($tahun, $bulan)
+    public function __construct($tahun, $bulan, $puskesmas)
     {
         $this->tahun = $tahun;
         $this->bulan = $bulan;
+        $this->puskesmas = $puskesmas;
     }
 
     public function collection()
@@ -28,6 +30,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
         return Ekseptor::with(['puskesmas', 'alat'])
             ->whereYear('created_at', $this->tahun)
             ->whereMonth('created_at', $this->bulan)
+            ->where('id_puskesmas', $this->puskesmas)
             ->get()
             ->map(function ($ekseptor) {
                 return [

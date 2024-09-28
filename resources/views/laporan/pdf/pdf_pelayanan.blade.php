@@ -136,16 +136,17 @@
                         {{ App\Models\Sasaran::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('pus_4t') }}
                     </td>
                     <td>
-                        {{ App\Models\Pelayanan::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('kb_aktif') }}
+                        {{ App\Models\Ekseptor::where('id_puskesmas', $puskesmas)->whereYear('created_at', $tahun)->whereMonth('created_at', $bulan)->count() }}
                     </td>
                     <td>
                         @php
                             $jumlah = App\Models\Sasaran::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
                                 ->sum('jumlah');
-                            $kb_aktif = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
-                                ->where('id_kelurahan', $item->id)
-                                ->sum('kb_aktif');
+                            $kb_aktif = App\Models\Ekseptor::where('id_puskesmas', $puskesmas)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
+                                ->count();
                             $persentase_kb_aktif = 0;
                             if ($jumlah > 0) {
                                 $persentase_kb_aktif = ($kb_aktif / $jumlah) * 100;

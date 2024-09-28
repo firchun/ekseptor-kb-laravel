@@ -11,10 +11,6 @@
                         name: 'id'
                     },
 
-                    {
-                        data: 'kb_aktif',
-                        name: 'kb_aktif'
-                    },
 
                     {
                         data: 'komplikasi',

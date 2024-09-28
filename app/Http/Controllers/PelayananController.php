@@ -35,7 +35,6 @@ class PelayananController extends Controller
         $request->validate([
             'id_puskesmas' => 'required|exists:puskesmas,id',
             'id_kelurahan' => 'required|exists:kelurahan,id',
-            'kb_aktif' => 'required|string|max:255',
             'komplikasi' => 'required|string|max:255',
             'kegagalan' => 'required|string|max:255',
             'dropout' => 'required|string|max:255',
@@ -46,7 +45,6 @@ class PelayananController extends Controller
         $pelayananData = [
             'id_puskesmas' => $request->input('id_puskesmas'),
             'id_kelurahan' => $request->input('id_kelurahan'),
-            'kb_aktif' => $request->input('kb_aktif'),
             'komplikasi' => $request->input('komplikasi'),
             'kegagalan' => $request->input('kegagalan'),
             'dropout' => $request->input('dropout'),

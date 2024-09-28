@@ -85,11 +85,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="formKbAktifCreate" class="form-label">KB Aktif</label>
-                        <input type="number" class="form-control" id="formKbAktifCreate" name="kb_aktif"
-                            value="0" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="formKomplikasiCreate" class="form-label">Komplikasi</label>
                         <input type="number" class="form-control" id="formKomplikasiCreate" name="komplikasi"
                             value="0" required>
