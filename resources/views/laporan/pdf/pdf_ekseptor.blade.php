@@ -65,6 +65,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Kelurahan</th>
                 <th>Nama Puskesmas</th>
                 <th>Nama Alat</th>
                 <th>Nama</th>
@@ -84,6 +85,7 @@
             @foreach ($ekseptors as $ekseptor)
                 <tr>
                     <td>{{ $ekseptor->id }}</td>
+                    <td>{{ $ekseptor->kelurahan->nama_kelurahan ?? 'N/A' }}</td>
                     <td>{{ $ekseptor->puskesmas->nama_puskesmas ?? 'N/A' }}</td>
                     <td>{{ $ekseptor->alat->nama_alat ?? 'N/A' }}</td>
                     <td>{{ $ekseptor->nama }}</td>

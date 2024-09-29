@@ -35,6 +35,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
             ->map(function ($ekseptor) {
                 return [
                     'id' => $ekseptor->id,
+                    'nama_kelurahan' => $ekseptor->kelurahan->nama_kelurahan ?? null,
                     'nama_puskesmas' => $ekseptor->puskesmas->nama_puskesmas ?? null,
                     'nama_alat' => $ekseptor->alat->nama_alat ?? null,
                     'nama' => $ekseptor->nama,
@@ -56,6 +57,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
     {
         return [
             'ID',
+            'Kelurahan',
             'Nama Puskesmas',
             'Nama Alat',
             'Nama',

@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ekseptorModalLabel">Update Data Ekeptor</h5>
+                <h5 class="modal-title" id="ekseptorModalLabel">Update Data Akseptor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     ×
                 </button>
@@ -12,7 +12,8 @@
                 <!-- Form for Create and Edit -->
                 <form id="ekseptorForm">
                     <input type="hidden" id="formEkeptorId" name="id">
-                    <input type="hidden" id="formEkeptorIdPuskesmas" name="id_puskesmas">
+                    <input type="hidden" id="formEkeptorIdPuskesmas" name="id_puskesmas"
+                        value="{{ Auth::user()->id_puskesmas }}">
 
                     <div class="mb-3">
                         <label for="formAlatKontrasepsi" class="form-label">Alat Kontrasepsi</label>
@@ -20,6 +21,14 @@
 
                             @foreach (App\Models\AlatKontrasepsi::all() as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama_alat }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formAlatKontrasepsi" class="form-label">Kelurahan</label>
+                        <select class="form-control" id="formKelurahan" name="id_kelurahan" required>
+                            @foreach (App\Models\Kelurahan::where('id_puskesmas', Auth::user()->id_puskesmas)->get() as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_kelurahan }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -97,7 +106,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ekseptorModalLabel">Tambah Ekeptor</h5>
+                <h5 class="modal-title" id="ekseptorModalLabel">Tambah Akseptor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     ×
                 </button>
@@ -111,6 +120,14 @@
                         <select class="form-control" id="formAlatKontrasepsi" name="id_alat_kontrasepsi" required>
                             @foreach (App\Models\AlatKontrasepsi::all() as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama_alat }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formAlatKontrasepsi" class="form-label">Kelurahan</label>
+                        <select class="form-control" id="formKelurahan" name="id_kelurahan" required>
+                            @foreach (App\Models\Kelurahan::where('id_puskesmas', Auth::user()->id_puskesmas)->get() as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_kelurahan }}</option>
                             @endforeach
                         </select>
                     </div>

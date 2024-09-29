@@ -18,7 +18,7 @@ class EkseptorController extends Controller
     }
     public function getEkseptorDataTable()
     {
-        $ekseptor = Ekseptor::with(['alat'])->orderByDesc('id');
+        $ekseptor = Ekseptor::with(['alat', 'kelurahan'])->orderByDesc('id');
         if (Auth::user()->role != 'Admin') {
             $ekseptor->where('id_puskesmas', Auth::user()->id_puskesmas);
         }
@@ -37,6 +37,7 @@ class EkseptorController extends Controller
         $request->validate([
             'id_alat_kontrasepsi' => 'required|exists:alat_kontrasepsi,id',
             'id_puskesmas' => 'required|exists:puskesmas,id',
+            'id_kelurahan' => 'required|exists:kelurahan,id',
             'nama' => 'required|string|max:255',
             'tanggal_pemakaian' => 'required|date',
             'tanggal_lahir' => 'required|date',
@@ -54,6 +55,7 @@ class EkseptorController extends Controller
         $ekseptorData = [
             'id_alat_kontrasepsi' => $request->input('id_alat_kontrasepsi'),
             'id_puskesmas' => $request->input('id_puskesmas'),
+            'id_kelurahan' => $request->input('id_kelurahan'),
             'nama' => $request->input('nama'),
             'tanggal_pemakaian' => $request->input('tanggal_pemakaian'),
             'tanggal_lahir' => $request->input('tanggal_lahir'),

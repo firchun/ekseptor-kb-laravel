@@ -29,6 +29,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Kelurahan</th>
                                 <th>Nama</th>
                                 <th>Anak</th>
                                 <th>NIK</th>
@@ -44,6 +45,7 @@
                         <tfoot>
                             <tr>
                                 <th>ID</th>
+                                <th>Kelurahan</th>
                                 <th>Nama</th>
                                 <th>Anak</th>
                                 <th>NIK</th>

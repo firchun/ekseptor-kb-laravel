@@ -12,6 +12,11 @@
                     },
 
                     {
+                        data: 'kelurahan.nama_kelurahan',
+                        name: 'kelurahan.nama_kelurahan'
+                    },
+
+                    {
                         data: 'nama',
                         name: 'nama'
                     },
@@ -63,6 +68,7 @@
                     success: function(response) {
                         $('#formEkeptorId').val(response.id);
                         $('#formAlatKontrasepsi').val(response.id_alat_kontrasepsi);
+                        $('#formKelurahan').val(response.id_kelurahan);
                         $('#formNama').val(response.nama);
                         $('#formTanggalPemakaian').val(response.tanggal_pemakaian);
                         $('#formTanggalLahir').val(response.tanggal_lahir);

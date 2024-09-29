@@ -136,7 +136,7 @@
                         {{ App\Models\Sasaran::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->sum('pus_4t') }}
                     </td>
                     <td>
-                        {{ App\Models\Ekseptor::where('id_puskesmas', $puskesmas)->whereYear('created_at', $tahun)->whereMonth('created_at', $bulan)->count() }}
+                        {{ App\Models\Ekseptor::where('id_puskesmas', $puskesmas)->where('id_kelurahan', $item->id)->whereYear('created_at', $tahun)->whereMonth('created_at', $bulan)->count() }}
                     </td>
                     <td>
                         @php
@@ -144,6 +144,7 @@
                                 ->where('id_kelurahan', $item->id)
                                 ->sum('jumlah');
                             $kb_aktif = App\Models\Ekseptor::where('id_puskesmas', $puskesmas)
+                                ->where('id_kelurahan', $item->id)
                                 ->whereYear('created_at', $tahun)
                                 ->whereMonth('created_at', $bulan)
                                 ->count();

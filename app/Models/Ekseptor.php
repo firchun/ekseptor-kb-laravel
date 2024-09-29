@@ -21,4 +21,8 @@ class Ekseptor extends Model
     {
         return $this->belongsTo(Puskesmas::class, 'id_puskesmas');
     }
+    public function kelurahan(): BelongsTo
+    {
+        return $this->belongsTo(Kelurahan::class, 'id_kelurahan');
+    }
 }

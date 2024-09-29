@@ -93,7 +93,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="counter-stat">
                             <i class="icofont-flag"></i>
-                            <span class="h3 counter" data-count="{{ App\Models\Pelayanan::sum('kb_aktif') }}">0</span>+
+                            <span class="h3 counter" data-count="{{ App\Models\Ekseptor::count() }}">0</span>+
                             <p>KB Aktif</p>
                         </div>
                     </div>
