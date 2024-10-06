@@ -16,13 +16,8 @@
                         value="{{ Auth::user()->id_puskesmas }}">
 
                     <div class="mb-3">
-                        <label for="formAlatKontrasepsi" class="form-label">Alat Kontrasepsi</label>
-                        <select class="form-control" id="formAlatKontrasepsi" name="id_alat_kontrasepsi" required>
-
-                            @foreach (App\Models\AlatKontrasepsi::all() as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama_alat }}</option>
-                            @endforeach
-                        </select>
+                        <label for="formNama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="formNama" name="nama" required>
                     </div>
                     <div class="mb-3">
                         <label for="formAlatKontrasepsi" class="form-label">Kelurahan</label>
@@ -32,18 +27,6 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="formNama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="formNama" name="nama" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="formTanggalPemakaian" class="form-label">Tanggal Pemakaian</label>
-                        <input type="date" class="form-control" id="formTanggalPemakaian" name="tanggal_pemakaian"
-                            required>
-                    </div>
-
                     <div class="mb-3">
                         <label for="formTanggalLahir" class="form-label">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="formTanggalLahir" name="tanggal_lahir" required>
@@ -116,12 +99,8 @@
                 <form id="createEkseptorForm">
                     <input type="hidden" name="id_puskesmas" value="{{ Auth::user()->id_puskesmas }}">
                     <div class="mb-3">
-                        <label for="formAlatKontrasepsi" class="form-label">Alat Kontrasepsi</label>
-                        <select class="form-control" id="formAlatKontrasepsi" name="id_alat_kontrasepsi" required>
-                            @foreach (App\Models\AlatKontrasepsi::all() as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama_alat }}</option>
-                            @endforeach
-                        </select>
+                        <label for="formNama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="createFormNama" name="nama" required>
                     </div>
                     <div class="mb-3">
                         <label for="formAlatKontrasepsi" class="form-label">Kelurahan</label>
@@ -131,18 +110,6 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="formNama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="createFormNama" name="nama" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="formTanggalPemakaian" class="form-label">Tanggal Pemakaian</label>
-                        <input type="date" class="form-control" id="createFormTanggalPemakaian"
-                            name="tanggal_pemakaian" required>
-                    </div>
-
                     <div class="mb-3">
                         <label for="formTanggalLahir" class="form-label">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="createFormTanggalLahir" name="tanggal_lahir"

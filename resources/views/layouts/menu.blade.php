@@ -122,17 +122,19 @@
                         <span>{{ __('Kelurahan') }}</span>
                     </a>
                 </li>
-                <div class="sidebar-heading">
-                    {{ __('Master Pelayanan') }}
-                </div>
-
                 <!-- Nav Item - Profile -->
                 <li class="nav-item {{ Nav::isRoute('ekseptor') }}">
                     <a class="nav-link" href="{{ route('ekseptor') }}">
                         <i class="fas fa-fw fa-users"></i>
-                        <span>{{ __('Akseptor KB') }}</span>
+                        <span>{{ __('Data Akseptor') }}</span>
                     </a>
                 </li>
+                <div class="sidebar-heading">
+                    {{ __('Master Pelayanan') }}
+                </div>
+
+
+
                 <!-- Nav Item - Profile -->
                 <li class="nav-item {{ Nav::isRoute('sasaran') }}">
                     <a class="nav-link" href="{{ route('sasaran') }}">
@@ -148,10 +150,17 @@
                     </a>
                 </li>
                 <!-- Nav Item - Profile -->
+                <li class="nav-item {{ Nav::isRoute('pemantauan_ekseptor') }}">
+                    <a class="nav-link" href="{{ route('pemantauan_ekseptor') }}">
+                        <i class="fas fa-fw fa-check"></i>
+                        <span>{{ __('Penggunaan Alat') }}</span>
+                    </a>
+                </li>
+                <!-- Nav Item - Profile -->
                 <li class="nav-item {{ Nav::isRoute('pemantauan') }}">
                     <a class="nav-link" href="{{ route('pemantauan') }}">
                         <i class="fas fa-fw fa-check"></i>
-                        <span>{{ __('Pemantauan Alat') }}</span>
+                        <span>{{ __('Penerimaan Alat') }}</span>
                     </a>
                 </li>
             @endif

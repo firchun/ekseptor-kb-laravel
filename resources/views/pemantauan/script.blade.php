@@ -51,37 +51,7 @@
                         name: 'terima_kdm',
                         className: 'text-center'
                     },
-                    {
-                        data: 'pengguna_pil',
-                        name: 'pengguna_pil',
-                        className: 'text-center'
-                    },
 
-                    {
-                        data: 'pengguna_suntik_1bln',
-                        name: 'pengguna_suntik_1bln',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'pengguna_suntik_3bln',
-                        name: 'pengguna_suntik_3bln',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'pengguna_akdr',
-                        name: 'pengguna_akdr',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'pengguna_impln',
-                        name: 'pengguna_impln',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'pengguna_kdm',
-                        name: 'pengguna_kdm',
-                        className: 'text-center'
-                    },
                     {
                         data: 'action',
                         name: 'action',

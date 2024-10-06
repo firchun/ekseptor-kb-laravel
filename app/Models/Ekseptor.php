@@ -13,10 +13,7 @@ class Ekseptor extends Model
     protected $table = 'ekseptor';
     protected $guarded = [];
 
-    public function alat(): BelongsTo
-    {
-        return $this->belongsTo(AlatKontrasepsi::class, 'id_alat_kontrasepsi');
-    }
+
     public function puskesmas(): BelongsTo
     {
         return $this->belongsTo(Puskesmas::class, 'id_puskesmas');

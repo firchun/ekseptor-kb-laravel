@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="modal fade" id="create" tabindex="-1" aria-labelledby="customersModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="userModalLabel">Tambah Data</h5>
@@ -40,7 +40,7 @@
                 <form id="createUserForm">
                     <input type="hidden" name="id_puskesmas" value="{{ Auth::user()->id_puskesmas }}">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-12">
                             <div class="mb-3 mx-1 bg-light rouncec p-2 border">
                                 <div class="mb-3">
                                     <label for="terima_pil" class="form-label">Kelurahan</label>
@@ -79,43 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="m-1 bg-light rounded p-2 border">
-                                <div class="mb-3">
-                                    <label for="pengguna_pil" class="form-label">Penggunaan Pil</label>
-                                    <input type="number" class="form-control" id="pengguna_pil" name="pengguna_pil"
-                                        value="0" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pengguna_suntik_1bln" class="form-label">Penggunaan Suntik (1
-                                        Bulan)</label>
-                                    <input type="number" class="form-control" id="pengguna_suntik_1bln"
-                                        name="pengguna_suntik_1bln" value="0" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pengguna_suntik_3bln" class="form-label">Penggunaan Suntik (3
-                                        Bulan)</label>
-                                    <input type="number" class="form-control" id="pengguna_suntik_3bln"
-                                        name="pengguna_suntik_3bln" value="0" required>
-                                </div>
 
-                                <div class="mb-3">
-                                    <label for="pengguna_akdr" class="form-label">Penggunaan AKDR</label>
-                                    <input type="number" class="form-control" id="pengguna_akdr"
-                                        name="pengguna_akdr" value="0" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pengguna_impln" class="form-label">Penggunaan Implant</label>
-                                    <input type="number" class="form-control" id="pengguna_impln"
-                                        name="pengguna_impln" value="0" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pengguna_kdm" class="form-label">Penggunaan KDM</label>
-                                    <input type="number" class="form-control" id="pengguna_kdm" name="pengguna_kdm"
-                                        value="0" required>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </form>
             </div>

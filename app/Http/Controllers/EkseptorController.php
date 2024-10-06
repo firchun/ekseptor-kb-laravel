@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkseptorItem;
 use App\Models\Ekseptor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +13,13 @@ class EkseptorController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Data Ekseptor',
+            'title' => 'Data Akseptor',
         ];
         return view('ekseptor.index', $data);
     }
     public function getEkseptorDataTable()
     {
-        $ekseptor = Ekseptor::with(['alat', 'kelurahan'])->orderByDesc('id');
+        $ekseptor = Ekseptor::with(['kelurahan'])->orderByDesc('id');
         if (Auth::user()->role != 'Admin') {
             $ekseptor->where('id_puskesmas', Auth::user()->id_puskesmas);
         }
@@ -27,19 +28,20 @@ class EkseptorController extends Controller
             ->addColumn('action', function ($ekseptor) {
                 return view('ekseptor.components.actions', compact('ekseptor'));
             })
+            ->addColumn('action_pemantuan', function ($ekseptor) {
+                return view('pemantauan_akseptor.components.actions', compact('ekseptor'));
+            })
 
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'action_pemantuan'])
             ->make(true);
     }
     public function store(Request $request)
     {
         // Validasi input sesuai dengan kolom di tabel ekseptor
         $request->validate([
-            'id_alat_kontrasepsi' => 'required|exists:alat_kontrasepsi,id',
             'id_puskesmas' => 'required|exists:puskesmas,id',
             'id_kelurahan' => 'required|exists:kelurahan,id',
             'nama' => 'required|string|max:255',
-            'tanggal_pemakaian' => 'required|date',
             'tanggal_lahir' => 'required|date',
             'pendidikan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
@@ -53,11 +55,9 @@ class EkseptorController extends Controller
 
         // Mengambil data dari request
         $ekseptorData = [
-            'id_alat_kontrasepsi' => $request->input('id_alat_kontrasepsi'),
             'id_puskesmas' => $request->input('id_puskesmas'),
             'id_kelurahan' => $request->input('id_kelurahan'),
             'nama' => $request->input('nama'),
-            'tanggal_pemakaian' => $request->input('tanggal_pemakaian'),
             'tanggal_lahir' => $request->input('tanggal_lahir'),
             'pendidikan' => $request->input('pendidikan'),
             'alamat' => $request->input('alamat'),
@@ -92,6 +92,11 @@ class EkseptorController extends Controller
 
         if (!$ekseptor) {
             return response()->json(['message' => 'ekseptor not found'], 404);
+        } else {
+            $item = AkseptorItem::where('id_ekseptor', $id)->get();
+            foreach ($item as $i) {
+                $i->delete();
+            }
         }
 
         $ekseptor->delete();

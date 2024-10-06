@@ -27,7 +27,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
 
     public function collection()
     {
-        return Ekseptor::with(['puskesmas', 'alat'])
+        return Ekseptor::with(['puskesmas'])
             ->whereYear('created_at', $this->tahun)
             ->whereMonth('created_at', $this->bulan)
             ->where('id_puskesmas', $this->puskesmas)
@@ -37,9 +37,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
                     'id' => $ekseptor->id,
                     'nama_kelurahan' => $ekseptor->kelurahan->nama_kelurahan ?? null,
                     'nama_puskesmas' => $ekseptor->puskesmas->nama_puskesmas ?? null,
-                    'nama_alat' => $ekseptor->alat->nama_alat ?? null,
                     'nama' => $ekseptor->nama,
-                    'tanggal_pemakaian' => $ekseptor->tanggal_pemakaian,
                     'tanggal_lahir' => $ekseptor->tanggal_lahir,
                     'pendidikan' => $ekseptor->pendidikan,
                     'alamat' => $ekseptor->alamat,
@@ -59,9 +57,7 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
             'ID',
             'Kelurahan',
             'Nama Puskesmas',
-            'Nama Alat',
             'Nama',
-            'Tanggal Pemakaian',
             'Tanggal Lahir',
             'Pendidikan',
             'Alamat',

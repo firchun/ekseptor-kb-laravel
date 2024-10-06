@@ -261,67 +261,74 @@
                             })->sum('terima_kdm') }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_pil') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'pil')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_suntik_1bln') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'suntik_1bln')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_suntik_3bln') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'suntik_3bln')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_akdr') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'akdr')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_impln') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'impln')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                $query->where('id_puskesmas', $puskesmas);
-                            })->sum('pengguna_kdm') }}
+                        {{ App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                            $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                        })->where('penggunaan', 'kndm')->count() }}
                     </td>
                     <td>
                         {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })->sum('terima_pil') -
-                            App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                    $query->where('id_puskesmas', $puskesmas);
-                                })->sum('pengguna_pil') }}
+                            App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                            })->where('penggunaan', 'pil')->count() }}
+
                     </td>
                     <td>
                         {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })->sum('terima_suntik') -
-                            (App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                    $query->where('id_puskesmas', $puskesmas);
-                                })->sum('pengguna_suntik_1bln') +
-                                App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                        $query->where('id_puskesmas', $puskesmas);
-                                    })->sum('pengguna_suntik_3bln')) }}
+                            (App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                            })->where('penggunaan', 'suntik_1bln')->count() +
+                                App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                    $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                                })->where('penggunaan', 'suntik_3bln')->count()) }}
                     </td>
                     <td>
                         {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })->sum('terima_akdr') -
-                            App\Models\Pemantauan::where('id_kelurahan', $item->id)->whereHas('kelurahan', function ($query) use ($puskesmas) {
-                                    $query->where('id_puskesmas', $puskesmas);
-                                })->sum('pengguna_akdr') }}
+                            App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                            })->where('penggunaan', 'akdr')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('terima_impln') - App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('pengguna_impln') }}
+                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('terima_impln') -
+                            App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                            })->where('penggunaan', 'impln')->count() }}
                     </td>
                     <td>
-                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('terima_kdm') - App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('pengguna_kdm') }}
+                        {{ App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('terima_kdm') -
+                            App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
+                                $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
+                            })->where('penggunaan', 'kndm')->count() }}
                     </td>
                     <td></td>
                 </tr>

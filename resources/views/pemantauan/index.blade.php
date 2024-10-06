@@ -12,7 +12,7 @@
             <button class="btn btn-secondary create-new" type="button" data-bs-toggle="modal" data-bs-target="#create">
                 <span>
                     <i class="fa fa-plus me-sm-1"> </i>
-                    <span class="d-none d-sm-inline-block">Tambah Pemantauan</span>
+                    <span class="d-none d-sm-inline-block">Tambah Data Penerimaan</span>
                 </span>
             </button>
 
@@ -32,7 +32,6 @@
                                 <th rowspan="2">Tanggal</th>
                                 <th rowspan="2">KELURAHAN</th>
                                 <th colspan="5">PENERIMAAN</th>
-                                <th colspan="6">PENGGUNAAN</th>
                                 <th rowspan="2">Delete</th>
                             </tr>
                             <tr class="text-center">
@@ -41,13 +40,6 @@
                                 <th>AKDR</th>
                                 <th>IMPLN</th>
                                 <th>KDM</th>
-                                <th>PIL</th>
-                                <th>SUNTIK 1 BLN</th>
-                                <th>SUNTIK 3 BLN</th>
-                                <th>AKDR</th>
-                                <th>IMPLN</th>
-                                <th>KDM</th>
-
                             </tr>
                         </thead>
                     </table>

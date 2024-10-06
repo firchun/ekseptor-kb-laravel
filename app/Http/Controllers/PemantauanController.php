@@ -17,7 +17,7 @@ class PemantauanController extends Controller
     {
         $kelurahan = Kelurahan::where('id_puskesmas', Auth::user()->id_puskesmas)->first();
         $data = [
-            'title' => 'Pemantauan Persediaan Alat Kontrasepsi',
+            'title' => 'Data Penerimaan Alat Kontrasepsi',
             'kelurahan' => $kelurahan
         ];
         return view('pemantauan.index', $data);
@@ -50,12 +50,6 @@ class PemantauanController extends Controller
             'terima_akdr' => 'required|integer|min:0',
             'terima_impln' => 'required|integer|min:0',
             'terima_kdm' => 'required|integer|min:0',
-            'pengguna_pil' => 'required|integer|min:0',
-            'pengguna_suntik_1bln' => 'required|integer|min:0',
-            'pengguna_suntik_3bln' => 'required|integer|min:0',
-            'pengguna_akdr' => 'required|integer|min:0',
-            'pengguna_impln' => 'required|integer|min:0',
-            'pengguna_kdm' => 'required|integer|min:0',
         ]);
 
         $pemantauanData = [
@@ -66,12 +60,6 @@ class PemantauanController extends Controller
             'terima_akdr' => $request->input('terima_akdr'),
             'terima_impln' => $request->input('terima_impln'),
             'terima_kdm' => $request->input('terima_kdm'),
-            'pengguna_pil' => $request->input('pengguna_pil'),
-            'pengguna_suntik_1bln' => $request->input('pengguna_suntik_1bln'),
-            'pengguna_suntik_3bln' => $request->input('pengguna_suntik_3bln'),
-            'pengguna_akdr' => $request->input('pengguna_akdr'),
-            'pengguna_impln' => $request->input('pengguna_impln'),
-            'pengguna_kdm' => $request->input('pengguna_kdm'),
         ];
 
         if ($request->filled('id')) {

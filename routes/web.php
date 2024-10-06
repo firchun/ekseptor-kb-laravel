@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlatKontrasepsiController;
 use App\Http\Controllers\EkseptorController;
+use App\Http\Controllers\EkseptorItemController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelayananController;
@@ -40,6 +41,9 @@ Route::middleware(['auth:web'])->group(function () {
     //ekseptor
     Route::get('/ekseptor', [EkseptorController::class, 'index'])->name('ekseptor');
     Route::get('/ekseptor-datatable', [EkseptorController::class, 'getEkseptorDataTable']);
+    //pemantauan akseptor
+    Route::get('/pemantauan_ekseptor', [EkseptorItemController::class, 'index'])->name('pemantauan_ekseptor');
+    Route::get('/ekseptor-pemantauan-datatable/{id}', [EkseptorItemController::class, 'getAkseptorItemDataTable']);
     //sasaran
     Route::get('/sasaran', [SasaranController::class, 'index'])->name('sasaran');
     Route::get('/sasaran-datatable', [SasaranController::class, 'getSasaranDataTable']);
@@ -72,6 +76,9 @@ Route::middleware(['auth:web', 'role:Operator'])->group(function () {
     //setting
     Route::get('/update_puskesmas', [PuskesmasController::class, 'puskesmas'])->name('update_puskesmas');
     Route::put('/update_puskesmas/update', [PuskesmasController::class, 'update_puskesmas'])->name('update_puskesmas.update');
+    //data pemantauan ekseptor
+    Route::post('/pemantauan-ekseptor/store',  [EkseptorItemController::class, 'store'])->name('pemantauan-ekseptor.store');
+    Route::delete('/pemantauan-ekseptor/delete/{id}',  [EkseptorItemController::class, 'destroy'])->name('pemantauan-ekseptor.delete');
     //data ekseptor
     Route::post('/ekseptor/store',  [EkseptorController::class, 'store'])->name('ekseptor.store');
     Route::get('/ekseptor/edit/{id}',  [EkseptorController::class, 'edit'])->name('ekseptor.edit');

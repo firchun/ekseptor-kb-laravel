@@ -40,7 +40,7 @@ class LaporanController extends Controller
             return Excel::download(new EkseptorExport($tahun, $bulan, $puskesmas), 'laporan-ekseptor-' . $bulan . $tahun . '.xlsx');
         } else {
 
-            $ekseptors = Ekseptor::with(['puskesmas', 'alat', 'kelurahan'])
+            $ekseptors = Ekseptor::with(['puskesmas', 'kelurahan'])
                 ->whereYear('created_at', $tahun)
                 ->whereMonth('created_at', $bulan)
                 ->where('id_puskesmas', $puskesmas)

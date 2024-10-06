@@ -32,14 +32,7 @@
                         data: 'no_bpjs',
                         name: 'no_bpjs'
                     },
-                    {
-                        data: 'alat.nama_alat',
-                        name: 'alat.nama_alat'
-                    },
-                    {
-                        data: 'tanggal_pemakaian',
-                        name: 'tanggal_pemakaian'
-                    },
+
                     {
                         data: 'alamat',
                         name: 'alamat'
@@ -67,10 +60,8 @@
                     url: '/ekseptor/edit/' + id,
                     success: function(response) {
                         $('#formEkeptorId').val(response.id);
-                        $('#formAlatKontrasepsi').val(response.id_alat_kontrasepsi);
                         $('#formKelurahan').val(response.id_kelurahan);
                         $('#formNama').val(response.nama);
-                        $('#formTanggalPemakaian').val(response.tanggal_pemakaian);
                         $('#formTanggalLahir').val(response.tanggal_lahir);
                         $('#formPendidikan').val(response.pendidikan);
                         $('#formAlamat').val(response.alamat);
@@ -121,9 +112,7 @@
                     success: function(response) {
                         alert(response.message);
                         $('#formEkeptorId').val('');
-                        $('#createFormAlatKontrasepsi').val('');
                         $('#createFormNama').val('');
-                        $('#createFormTanggalPemakaian').val('');
                         $('#createFormTanggalLahir').val('');
                         $('#createFormPendidikan').val('');
                         $('#createFormAlamat').val('');

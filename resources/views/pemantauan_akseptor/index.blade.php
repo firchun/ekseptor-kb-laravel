@@ -6,16 +6,10 @@
             <button class="btn btn-secondary refresh btn-default" type="button">
                 <span>
                     <i class="fa fa-rotate me-sm-1"> </i>
-                    <span class="d-none d-sm-inline-block"></span>
+                    <span class="d-none d-sm-inline-block"> Refresh</span>
                 </span>
             </button>
-            <button class="btn btn-secondary create-new btn-primary" type="button" data-bs-toggle="modal"
-                data-bs-target="#create">
-                <span>
-                    <i class="fa fa-plus me-sm-1"> </i>
-                    <span class="d-none d-sm-inline-block">Tambah Data</span>
-                </span>
-            </button>
+
         </div>
     </div>
     <div class="row justify-content-center">
@@ -31,10 +25,8 @@
                                 <th>ID</th>
                                 <th>Kelurahan</th>
                                 <th>Nama</th>
-                                <th>Anak</th>
                                 <th>NIK</th>
                                 <th>NO. BPJS</th>
-                                <th>Alamat</th>
                                 <th>Jenis</th>
                                 <th>Action</th>
                             </tr>
@@ -45,10 +37,8 @@
                                 <th>ID</th>
                                 <th>Kelurahan</th>
                                 <th>Nama</th>
-                                <th>Anak</th>
                                 <th>NIK</th>
                                 <th>NO. BPJS</th>
-                                <th>Alamat</th>
                                 <th>Jenis</th>
                                 <th>Action</th>
                             </tr>
@@ -58,6 +48,6 @@
             </div>
         </div>
     </div>
-    @include('ekseptor.components.modal')
+    @include('pemantauan_akseptor.components.modal')
 @endsection
-@include('ekseptor.script')
+@include('pemantauan_akseptor.script')
