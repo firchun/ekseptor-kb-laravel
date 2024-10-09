@@ -83,18 +83,18 @@
             @foreach ($ekseptors as $ekseptor)
                 <tr>
                     <td>{{ $ekseptor->id }}</td>
-                    <td>{{ $ekseptor->kelurahan->nama_kelurahan ?? 'N/A' }}</td>
-                    <td>{{ $ekseptor->puskesmas->nama_puskesmas ?? 'N/A' }}</td>
-                    <td>{{ $ekseptor->nama }}</td>
-                    <td>{{ $ekseptor->tanggal_lahir }}</td>
-                    <td>{{ $ekseptor->pendidikan }}</td>
-                    <td>{{ $ekseptor->alamat }}</td>
-                    <td>{{ $ekseptor->jumlah_anak }}</td>
-                    <td>{{ $ekseptor->tinggi_badan }}</td>
-                    <td>{{ $ekseptor->berat_badan }}</td>
-                    <td>{{ $ekseptor->no_bpjs }}</td>
+                    <td>{{ $ekseptor->ekseptor->kelurahan->nama_kelurahan ?? 'N/A' }}</td>
+                    <td>{{ $ekseptor->ekseptor->puskesmas->nama_puskesmas ?? 'N/A' }}</td>
+                    <td>{{ $ekseptor->ekseptor->nama }}</td>
+                    <td>{{ $ekseptor->ekseptor->tanggal_lahir }}</td>
+                    <td>{{ $ekseptor->ekseptor->pendidikan }}</td>
+                    <td>{{ $ekseptor->ekseptor->alamat }}</td>
+                    <td>{{ $ekseptor->ekseptor->jumlah_anak }}</td>
+                    <td>{{ $ekseptor->ekseptor->tinggi_badan }}</td>
+                    <td>{{ $ekseptor->ekseptor->berat_badan }}</td>
+                    <td>{{ $ekseptor->ekseptor->no_bpjs }}</td>
                     <td>{{ $ekseptor->nik }}</td>
-                    <td>{{ $ekseptor->jenis_ras }}</td>
+                    <td>{{ $ekseptor->ekseptor->jenis_ras }}</td>
                 </tr>
             @endforeach
         </tbody>

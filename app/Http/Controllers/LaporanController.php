@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EkseptorExport;
+use App\Models\AkseptorItem;
 use App\Models\Ekseptor;
 use App\Models\Puskesmas;
 use Maatwebsite\Excel\Facades\Excel;
@@ -40,13 +41,21 @@ class LaporanController extends Controller
             return Excel::download(new EkseptorExport($tahun, $bulan, $puskesmas), 'laporan-ekseptor-' . $bulan . $tahun . '.xlsx');
         } else {
 
-            $ekseptors = Ekseptor::with(['puskesmas', 'kelurahan'])
-                ->whereYear('created_at', $tahun)
-                ->whereMonth('created_at', $bulan)
-                ->where('id_puskesmas', $puskesmas)
+            $ekseptors = AkseptorItem::with(['ekseptor'])
+                ->whereYear('tanggal_penggunaan', $tahun)
+                ->whereMonth('tanggal_penggunaan', $bulan)
+                ->whereHas('ekseptor', function ($query) use ($puskesmas) {
+                    $query->where('id_puskesmas', $puskesmas);
+                })
                 ->get();
-            $oap = $ekseptors->where('jenis_ras', 'OAP')->count();
-            $non_oap = $ekseptors->where('jenis_ras', 'NON-OAP')->count();
+
+            $oap = $ekseptors->filter(function ($item) {
+                return $item->ekseptor->jenis_ras === 'OAP';
+            })->count();
+
+            $non_oap = $ekseptors->filter(function ($item) {
+                return $item->ekseptor->jenis_ras === 'NON-OAP';
+            })->count();
 
             $pdf = PDF::loadView('laporan.pdf.pdf_ekseptor', compact('ekseptors', 'bulan', 'tahun', 'oap', 'non_oap'))->setPaper('A4', 'landscape');
             return $pdf->download('laporan-akseptor-' . $bulan . $tahun . '.pdf');

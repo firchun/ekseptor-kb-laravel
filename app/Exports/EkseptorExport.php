@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\AkseptorItem;
 use App\Models\Ekseptor;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -27,26 +28,28 @@ class EkseptorExport implements FromCollection, WithHeadings, WithStartRow, With
 
     public function collection()
     {
-        return Ekseptor::with(['puskesmas'])
-            ->whereYear('created_at', $this->tahun)
-            ->whereMonth('created_at', $this->bulan)
-            ->where('id_puskesmas', $this->puskesmas)
+        return AkseptorItem::with(['ekseptor'])
+            ->whereYear('tanggal_penggunaan', $this->tahun)
+            ->whereMonth('tanggal_penggunaan', $this->bulan)
+            ->whereHas('ekseptor', function ($query) {
+                $query->where('id_puskesmas', $this->puskesmas);
+            })
             ->get()
             ->map(function ($ekseptor) {
                 return [
                     'id' => $ekseptor->id,
-                    'nama_kelurahan' => $ekseptor->kelurahan->nama_kelurahan ?? null,
-                    'nama_puskesmas' => $ekseptor->puskesmas->nama_puskesmas ?? null,
-                    'nama' => $ekseptor->nama,
-                    'tanggal_lahir' => $ekseptor->tanggal_lahir,
-                    'pendidikan' => $ekseptor->pendidikan,
-                    'alamat' => $ekseptor->alamat,
-                    'jumlah_anak' => $ekseptor->jumlah_anak,
-                    'tinggi_badan' => $ekseptor->tinggi_badan,
-                    'berat_badan' => $ekseptor->berat_badan,
-                    'no_bpjs' => $ekseptor->no_bpjs,
-                    'nik' => $ekseptor->nik,
-                    'jenis_ras' => $ekseptor->jenis_ras,
+                    'nama_kelurahan' => $ekseptor->ekseptor->kelurahan->nama_kelurahan ?? null,
+                    'nama_puskesmas' => $ekseptor->ekseptor->puskesmas->nama_puskesmas ?? null,
+                    'nama' => $ekseptor->ekseptor->nama,
+                    'tanggal_lahir' => $ekseptor->ekseptor->tanggal_lahir,
+                    'pendidikan' => $ekseptor->ekseptor->pendidikan,
+                    'alamat' => $ekseptor->ekseptor->alamat,
+                    'jumlah_anak' => $ekseptor->ekseptor->jumlah_anak,
+                    'tinggi_badan' => $ekseptor->ekseptor->tinggi_badan,
+                    'berat_badan' => $ekseptor->ekseptor->berat_badan,
+                    'no_bpjs' => $ekseptor->ekseptor->no_bpjs,
+                    'nik' => $ekseptor->ekseptor->nik,
+                    'jenis_ras' => $ekseptor->ekseptor->jenis_ras,
                 ];
             });
     }

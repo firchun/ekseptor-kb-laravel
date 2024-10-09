@@ -25,13 +25,14 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <style>
+        .sidebar .nav-item.active .nav-link {
+            font-weight: 800 !important;
+        }
+    </style>
 </head>
 
-<body id="page-top"
-    style="background-image: url('{{ asset('img/background-kb.jpeg') }}'); 
-background-size: cover; 
-background-position: center; 
-">
+<body id="page-top" style="background-color: #838383cd;">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -101,13 +102,13 @@ background-position: center;
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b
-                                        style="color: #FF1493;"">{{ Auth::user()->name }}</b><br>
+                                        style="color: #3c3832cd;"">{{ Auth::user()->name }}</b><br>
                                     @if (Auth::user()->role != 'Admin')
                                         <small>{{ Auth::user()->puskesmas->nama_puskesmas }}</small>
                                     @endif
                                 </span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->name[0] }}" style="background: #FF1493;"></figure>
+                                    data-initial="{{ Auth::user()->name[0] }}" style="background: #3c3832cd;"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
