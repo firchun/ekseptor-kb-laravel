@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <!-- Form for Create and Edit -->
                 <form id="userForm">
-                    <input type="text" id="formCustomerId" name="id">
+                    <input type="hidden" id="formCustomerId" name="id">
                     <div class="mb-3">
                         <label for="formCustomerName" class="form-label">Nama Depan</label>
                         <input type="text" class="form-control" id="formCustomerName" name="name" required>

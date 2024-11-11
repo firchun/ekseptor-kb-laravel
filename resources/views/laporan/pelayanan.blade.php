@@ -43,7 +43,7 @@
                                 <div class="mb-3">
                                     <select class="form-control" name="tahun" id="tahun">
                                         <option value="">Pilih Tahun</option>
-                                        @foreach (App\Models\Pemantauan::selectRaw('YEAR(created_at) as year')->groupBy('year')->orderBy('year', 'desc')->get() as $pemantauan)
+                                        @foreach (App\Models\AkseptorItem::selectRaw('YEAR(tanggal_penggunaan) as year')->groupBy('year')->orderBy('year', 'desc')->get() as $pemantauan)
                                             <option value="{{ $pemantauan->year }}">{{ $pemantauan->year }}</option>
                                         @endforeach
                                     </select>
