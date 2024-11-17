@@ -34,7 +34,7 @@ class PemantauanController extends Controller
                 return view('pemantauan.components.actions', compact('pemantauan'));
             })
             ->addColumn('tanggal', function ($pemantauan) {
-                return  $pemantauan->created_at->format('d-m-Y');
+                return $pemantauan->tanggal ? $pemantauan->tanggal->format('d-m-Y') : 'Tidak diisi';
             })
 
             ->rawColumns(['action', 'tanggal'])
@@ -50,6 +50,7 @@ class PemantauanController extends Controller
             'terima_akdr' => 'required|integer|min:0',
             'terima_impln' => 'required|integer|min:0',
             'terima_kdm' => 'required|integer|min:0',
+            'tanggal' => 'required',
         ]);
 
         $pemantauanData = [
@@ -60,6 +61,7 @@ class PemantauanController extends Controller
             'terima_akdr' => $request->input('terima_akdr'),
             'terima_impln' => $request->input('terima_impln'),
             'terima_kdm' => $request->input('terima_kdm'),
+            'tanggal' => $request->input('tanggal'),
         ];
 
         if ($request->filled('id')) {

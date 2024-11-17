@@ -50,6 +50,10 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="mb-3">
+                                    <label>Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" id="tanggal">
+                                </div>
                             </div>
                             <div class="m-1 bg-light rounded p-2 border">
                                 <div class="mb-3">

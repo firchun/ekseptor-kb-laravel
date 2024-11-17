@@ -46,19 +46,23 @@
     <section class="section service gray-bg">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-7 text-center">
+                <div class="col-lg-7 ">
                     <div class="section-title">
-                        <h2>{{ $title }}</h2>
+                        <h2 class="text-center">{{ $title }}</h2>
                         <div class="divider mx-auto my-4"></div>
-                        <img src="{{ Storage::url($alat->foto_alat) }}"
-                            style="max-width: 400px;height:200px; object-fit:cover;">
+                        <div class="text-center">
+                            <img src="{{ Storage::url($alat->foto_alat) }}"
+                                style="max-width: 400px;height:200px; object-fit:cover;">
+                        </div>
                         <div class="divider mx-auto my-4"></div>
-                        <h4>Cara Penggunaan</h4>
-                        <p>{{ $alat->cara_pakai }}</p>
-                        <h4>Kelebihan {{ $alat->nama_alat }}</h4>
-                        <p>{{ $alat->kelebihan }}</p>
-                        <h4>Kekurangan {{ $alat->nama_alat }}</h4>
-                        <p>{{ $alat->kekurangan }}</p>
+                        <h4 class="p-0"> <i class="icofont-long-arrow-right"></i>Cara Penggunaan</h4>
+                        <p class="text-justify">{{ $alat->cara_pakai }}</p>
+                        <h4 class="p-0"><i class="icofont-long-arrow-right"></i> Kelebihan {{ $alat->nama_alat }}
+                        </h4>
+                        <p class="text-justify">{{ $alat->kelebihan }}</p>
+                        <h4 class="p-0"><i class="icofont-long-arrow-right"></i> Kekurangan {{ $alat->nama_alat }}
+                        </h4>
+                        <p class="text-justify">{{ $alat->kekurangan }}</p>
                     </div>
                 </div>
             </div>
