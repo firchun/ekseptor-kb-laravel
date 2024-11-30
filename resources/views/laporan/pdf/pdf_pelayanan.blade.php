@@ -288,7 +288,7 @@
                         ->where('penggunaan', 'impln')
                         ->count();
 
-                    $penggunaanKdm = App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use (
+                    $penggunaanKndm = App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use (
                         $item,
                         $puskesmas,
                     ) {
