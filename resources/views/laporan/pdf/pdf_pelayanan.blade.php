@@ -604,7 +604,7 @@
                 <td>{{ $totalPenggunaanKndm }}</td>
                 <td>{{ $totalSisaPil }}</td>
                 <td>{{ $totalSisaSuntik }}</td>
-                <td>{{ $titalSisaAkdr }}</td>
+                <td>{{ $totalSisaAkdr }}</td>
                 <td>{{ $totalSisaImpln }}</td>
                 <td>{{ $totalSisaKndm }}</td>
                 <td></td>
