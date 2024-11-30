@@ -79,6 +79,7 @@
                         $('#terima_akdr').val(response.terima_akdr);
                         $('#terima_impln').val(response.terima_impln);
                         $('#terima_kdm').val(response.terima_kdm);
+                        $('#id_kelurahan').val(response.id_kelurahan);
                         $('#customersModal').modal('show');
                     },
                     error: function(xhr) {
