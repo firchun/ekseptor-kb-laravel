@@ -73,7 +73,12 @@
                     url: '/pemantauan/edit/' + id,
                     success: function(response) {
                         $('#formCustomerId').val(response.id);
-                        $('#formCustomerName').val(response.nama_kelurahan);
+                        $('#tanggal').val(response.tanggal);
+                        $('#terima_pil').val(response.terima_pil);
+                        $('#terima_suntik').val(response.terima_suntik);
+                        $('#terima_akdr').val(response.terima_akdr);
+                        $('#terima_impln').val(response.terima_impln);
+                        $('#terima_kdm').val(response.terima_kdm);
                         $('#customersModal').modal('show');
                     },
                     error: function(xhr) {

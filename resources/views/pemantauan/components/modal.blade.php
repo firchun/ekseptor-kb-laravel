@@ -12,9 +12,52 @@
                 <!-- Form for Create and Edit -->
                 <form id="userForm">
                     <input type="hidden" id="formCustomerId" name="id">
-                    <div class="mb-3">
-                        <label for="formCustomerName" class="form-label">Nama Kelurahan</label>
-                        <input type="text" class="form-control" id="formCustomerName" name="nama_kelurahan" required>
+                    <input type="hidden" name="id_puskesmas" value="{{ Auth::user()->id_puskesmas }}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3 mx-1 bg-light rouncec p-2 border">
+                                <div class="mb-3">
+                                    <label for="terima_pil" class="form-label">Kelurahan</label>
+                                    <select class="form-control" id="id_kelurahan" name="id_kelurahan" required>
+                                        @foreach (App\Models\Kelurahan::where('id_puskesmas', Auth::user()->id_puskesmas)->get() as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama_kelurahan }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label>Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" id="tanggal">
+                                </div>
+                            </div>
+                            <div class="m-1 bg-light rounded p-2 border">
+                                <div class="mb-3">
+                                    <label for="terima_pil" class="form-label">Penerimaan Pil</label>
+                                    <input type="number" class="form-control" id="terima_pil" name="terima_pil"
+                                        value="0" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="terima_suntik" class="form-label">Penerimaan Suntik</label>
+                                    <input type="number" class="form-control" id="terima_suntik" name="terima_suntik"
+                                        value="0" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="terima_akdr" class="form-label">Penerimaan AKDR</label>
+                                    <input type="number" class="form-control" id="terima_akdr" name="terima_akdr"
+                                        value="0" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="terima_impln" class="form-label">Penerimaan Implant</label>
+                                    <input type="number" class="form-control" id="terima_impln" name="terima_impln"
+                                        value="0" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="terima_kdm" class="form-label">Penerimaan KDM</label>
+                                    <input type="number" class="form-control" id="terima_kdm" name="terima_kdm"
+                                        value="0" required>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </form>
@@ -63,8 +106,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="terima_suntik" class="form-label">Penerimaan Suntik</label>
-                                    <input type="number" class="form-control" id="terima_suntik" name="terima_suntik"
-                                        value="0" required>
+                                    <input type="number" class="form-control" id="terima_suntik"
+                                        name="terima_suntik" value="0" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="terima_akdr" class="form-label">Penerimaan AKDR</label>

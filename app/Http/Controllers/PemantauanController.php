@@ -37,8 +37,8 @@ class PemantauanController extends Controller
             //     return $pemantauan->tanggal ? $pemantauan->tanggal->format('d-m-Y') : 'Tidak diisi';
             // })
             ->addColumn('tanggal', function ($pemantauan) {
-                return $pemantauan->tanggal 
-                    ? \Carbon\Carbon::parse($pemantauan->tanggal)->format('d-m-Y') 
+                return $pemantauan->tanggal
+                    ? \Carbon\Carbon::parse($pemantauan->tanggal)->format('d-m-Y')
                     : 'Tidak diisi';
             })
 
@@ -83,6 +83,16 @@ class PemantauanController extends Controller
         }
 
         return response()->json(['message' => $message]);
+    }
+    public function edit($id)
+    {
+        $pelayanan = Pemantauan::find($id);
+
+        if (!$pelayanan) {
+            return response()->json(['message' => 'pemantauan not found'], 404);
+        }
+
+        return response()->json($pelayanan);
     }
     public function destroy($id)
     {
