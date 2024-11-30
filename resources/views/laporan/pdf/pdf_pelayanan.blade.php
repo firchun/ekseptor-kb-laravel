@@ -226,7 +226,7 @@
                         ->whereYear('tanggal', $tahun)
                         ->sum('terima_impln');
 
-                    $penerimaanKdm = App\Models\Pemantauan::where('id_kelurahan', $item->id)
+                    $penerimaanKndm = App\Models\Pemantauan::where('id_kelurahan', $item->id)
                         ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                             $query->where('id_puskesmas', $puskesmas);
                         })
@@ -392,7 +392,7 @@
                     $totalPenerimaanSuntik += $penerimaanSuntik;
                     $totalPenerimaanAkdr += $penerimaanAkdr;
                     $totalPenerimaanImpln += $penerimaanImpln;
-                    $totalPenerimaanKndm += $penerimaanKdm;
+                    $totalPenerimaanKndm += $penerimaanKndm;
                     //penggunaan
                     $totalPenggunaanPil += $penggunaanPil;
                     $totalPenggunaanSuntik1Bln += $penggunaanSuntik1Bln;
@@ -533,7 +533,7 @@
                         {{ $penerimaanImpln }}
                     </td>
                     <td>
-                        {{ $penerimaanKdm }}
+                        {{ $penerimaanKndm }}
                     </td>
                     <td>
                         {{ $penggunaanPil }}
@@ -551,7 +551,7 @@
                         {{ $penggunaanImpln }}
                     </td>
                     <td>
-                        {{ $penggunaanKdm }}
+                        {{ $penggunaanKndm }}
                     </td>
                     <td>
                         {{ $sisaPil }}
