@@ -131,6 +131,24 @@
                 $totalDropout = 0;
                 $totalPusMiskinBerKb = 0;
                 $totalPus4TBerKb = 0;
+                $totalPenerimaanPil = 0;
+                $totalPenerimaanSuntik = 0;
+                $totalPenerimaanAkdr = 0;
+                $totalPenerimaanImpln = 0;
+                $totalPenerimaanKndm = 0;
+                //penggunaan
+                $totalPenggunaanPil = 0;
+                $totalPenggunaanSuntik1Bln = 0;
+                $totalPenggunaanSuntik3Bln = 0;
+                $totalPenggunaanAkdr = 0;
+                $totalPenggunaanImpln = 0;
+                $totalPenggunaanKndm = 0;
+                //sisa
+                $totalSisaPil = 0;
+                $totalSisaSuntik = 0;
+                $totalSisaAkdr = 0;
+                $totalSisaImpln = 0;
+                $totalSisaKndm = 0;
 
             @endphp
 
