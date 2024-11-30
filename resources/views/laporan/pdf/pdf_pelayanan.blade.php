@@ -418,7 +418,7 @@
                         {{ $pusMiskin }}
                     </td>
                     <td>
-                        {{ $pus4t }}
+                        {{ $pus4T }}
                     </td>
                     <td>
                         {{ $kbAktif }}
