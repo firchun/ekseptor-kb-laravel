@@ -33,8 +33,13 @@ class PemantauanController extends Controller
             ->addColumn('action', function ($pemantauan) {
                 return view('pemantauan.components.actions', compact('pemantauan'));
             })
+            // ->addColumn('tanggal', function ($pemantauan) {
+            //     return $pemantauan->tanggal ? $pemantauan->tanggal->format('d-m-Y') : 'Tidak diisi';
+            // })
             ->addColumn('tanggal', function ($pemantauan) {
-                return $pemantauan->tanggal ? $pemantauan->tanggal->format('d-m-Y') : 'Tidak diisi';
+                return $pemantauan->tanggal 
+                    ? \Carbon\Carbon::parse($pemantauan->tanggal)->format('d-m-Y') 
+                    : 'Tidak diisi';
             })
 
             ->rawColumns(['action', 'tanggal'])
