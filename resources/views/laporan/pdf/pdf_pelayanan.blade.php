@@ -163,9 +163,7 @@
                     $pus4T = App\Models\Sasaran::where('id_puskesmas', $puskesmas)
                         ->where('id_kelurahan', $item->id)
                         ->sum('pus_4t');
-                    $kbAktif = App\Models\Ekseptor::where('id_puskesmas', $puskesmas)
-                        ->where('id_kelurahan', $item->id)
-                        ->count();
+                    $kbAktif = App\Models\Ekseptor::where('id_kelurahan', $item->id)->count();
                     $komplikasi = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                         ->where('id_kelurahan', $item->id)
                         ->whereMonth('created_at', $bulan)
@@ -306,8 +304,8 @@
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan)
-                            ->whereYear('tanggal_penggunaan', $tahun)
+                            // ->whereMonth('tanggal_penggunaan', $bulan)
+                            // ->whereYear('tanggal_penggunaan', $tahun)
                             ->where('penggunaan', 'pil')
                             ->count();
                     $sisaSuntik =
@@ -320,15 +318,15 @@
                         (App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan)
-                            ->whereYear('tanggal_penggunaan', $tahun)
+                            // ->whereMonth('tanggal_penggunaan', $bulan)
+                            // ->whereYear('tanggal_penggunaan', $tahun)
                             ->where('penggunaan', 'suntik_1bln')
                             ->count() +
                             App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                                 $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                             })
-                                ->whereMonth('tanggal_penggunaan', $bulan)
-                                ->whereYear('tanggal_penggunaan', $tahun)
+                                // ->whereMonth('tanggal_penggunaan', $bulan)
+                                // ->whereYear('tanggal_penggunaan', $tahun)
                                 ->where('penggunaan', 'suntik_3bln')
                                 ->count());
                     $sisaAkdr =
@@ -341,8 +339,8 @@
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan)
-                            ->whereYear('tanggal_penggunaan', $tahun)
+                            // ->whereMonth('tanggal_penggunaan', $bulan)
+                            // ->whereYear('tanggal_penggunaan', $tahun)
                             ->where('penggunaan', 'akdr')
                             ->count();
 
@@ -351,18 +349,17 @@
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan)
-                            ->whereYear('tanggal_penggunaan', $tahun)
+                            // ->whereMonth('tanggal_penggunaan', $bulan)
+                            // ->whereYear('tanggal_penggunaan', $tahun)
                             ->where('penggunaan', 'impln')
                             ->count();
                     $sisaKndm =
-                        App\Models\Pemantauan::where('id_kelurahan', $item->id)
-                        ->sum('terima_kdm') -
+                        App\Models\Pemantauan::where('id_kelurahan', $item->id)->sum('terima_kdm') -
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan)
-                            ->whereYear('tanggal_penggunaan', $tahun)
+                            // ->whereMonth('tanggal_penggunaan', $bulan)
+                            // ->whereYear('tanggal_penggunaan', $tahun)
                             ->where('penggunaan', 'kndm')
                             ->count();
 
