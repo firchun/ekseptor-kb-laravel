@@ -537,6 +537,7 @@
                             if ($jumlah > 0) {
                                 $persentase_kb_aktif = ($kb_aktif / $jumlah) * 100;
                             }
+                            $totalpersentase_kb_aktif += $persentase_kb_aktif;
                         @endphp
                         {{ number_format($persentase_kb_aktif, 2, '.', '') }}
                     </td>
@@ -555,6 +556,7 @@
                             if ($jumlah > 0) {
                                 $persentase_komplikasi = ($komplikasi / $jumlah) * 100;
                             }
+                            $totalpersentase_komplikasi += $persentase_komplikasi;
                         @endphp
                         {{ number_format($persentase_komplikasi, 2, '.', '') }}
                     </td>
@@ -573,6 +575,7 @@
                             if ($jumlah > 0) {
                                 $persentase_kegagalan = ($kegagalan / $jumlah) * 100;
                             }
+                            $totalpersentase_kegagalan += $persentase_kegagalan;
                         @endphp
                         {{ number_format($persentase_kegagalan, 2, '.', '') }}
                     </td>
@@ -591,6 +594,7 @@
                             if ($jumlah > 0) {
                                 $persentase_dropout = ($dropout / $jumlah) * 100;
                             }
+                            $totalpersentase_dropout += $persentase_dropout;
                         @endphp
                         {{ number_format($persentase_dropout, 2, '.', '') }}
                     </td>
@@ -609,6 +613,7 @@
                             if ($jumlah > 0) {
                                 $persentase_pus_miskin = ($pus_miskin / $jumlah) * 100;
                             }
+                            $totalpersentase_pus_miskin += $persentase_pus_miskin;
                         @endphp
                         {{ number_format($persentase_pus_miskin, 2, '.', '') }}
                     </td>
@@ -627,6 +632,7 @@
                             if ($jumlah > 0) {
                                 $persentase_pus_4t = ($pus_4t / $jumlah) * 100;
                             }
+                            $totalpersentase_pus_4t += $persentase_pus_4t;
                         @endphp
                         {{ number_format($persentase_pus_4t, 2, '.', '') }}
                     </td>
@@ -690,17 +696,17 @@
                 <td>{{ $totalPusMiskin }}</td>
                 <td>{{ $totalPus4T }}</td>
                 <td>{{ $totalKbAktif }}</td>
-                <td>{{ number_format($totalpersentase_kb_aktif += $persentase_kb_aktif, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_kb_aktif, 2, '.', '') }}</td>
                 <td>{{ $totalKomplikasi }}</td>
-                <td>{{ number_format($totalpersentase_komplikasi += $persentase_komplikasi, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_komplikasi, 2, '.', '') }}</td>
                 <td>{{ $totalKegagalan }}</td>
-                <td>{{ number_format($totalpersentase_kegagalan += $persentase_kegagalan, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_kegagalan, 2, '.', '') }}</td>
                 <td>{{ $totalDropout }}</td>
-                <td>{{ number_format($totalpersentase_dropout += $persentase_dropout, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_dropout, 2, '.', '') }}</td>
                 <td>{{ $totalPusMiskinBerKb }}</td>
-                <td>{{ number_format($totalpersentase_pus_miskin += $persentase_pus_miskin, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_pus_miskin, 2, '.', '') }}</td>
                 <td>{{ $totalPus4TBerKb }}</td>
-                <td>{{ number_format($totalpersentase_pus_4t += $persentase_pus_4t, 2, '.', '') }}</td>
+                <td>{{ number_format($totalpersentase_pus_4t, 2, '.', '') }}</td>
                 <td>{{ $totalPenerimaanPil }}</td>
                 <td>{{ $totalPenerimaanSuntik }}</td>
                 <td>{{ $totalPenerimaanAkdr }}</td>
