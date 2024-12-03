@@ -149,6 +149,13 @@
                 $totalSisaAkdr = 0;
                 $totalSisaImpln = 0;
                 $totalSisaKndm = 0;
+                //total persen
+                $totalpersentase_kb_aktif = 0;
+                $totalpersentase_komplikasi = 0;
+                $totalpersentase_kegagalan = 0;
+                $totalpersentase_dropout = 0;
+                $totalpersentase_pus_miskin = 0;
+                $totalpersentase_pus_4t = 0;
 
             @endphp
 
@@ -541,6 +548,8 @@
 
                             $komplikasi = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
                                 ->sum('komplikasi');
                             $persentase_komplikasi = 0;
                             if ($jumlah > 0) {
@@ -557,6 +566,8 @@
 
                             $kegagalan = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
                                 ->sum('kegagalan');
                             $persentase_kegagalan = 0;
                             if ($jumlah > 0) {
@@ -573,6 +584,8 @@
 
                             $dropout = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
                                 ->sum('dropout');
                             $persentase_dropout = 0;
                             if ($jumlah > 0) {
@@ -589,6 +602,8 @@
 
                             $pus_miskin = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
                                 ->sum('pus_miskin');
                             $persentase_pus_miskin = 0;
                             if ($jumlah > 0) {
@@ -605,6 +620,8 @@
 
                             $pus_4t = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                                 ->where('id_kelurahan', $item->id)
+                                ->whereYear('created_at', $tahun)
+                                ->whereMonth('created_at', $bulan)
                                 ->sum('pus_4t');
                             $persentase_pus_4t = 0;
                             if ($jumlah > 0) {
@@ -673,17 +690,17 @@
                 <td>{{ $totalPusMiskin }}</td>
                 <td>{{ $totalPus4T }}</td>
                 <td>{{ $totalKbAktif }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_kb_aktif += $persentase_kb_aktif, 2, '.', '') }}</td>
                 <td>{{ $totalKomplikasi }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_komplikasi += $persentase_komplikasi, 2, '.', '') }}</td>
                 <td>{{ $totalKegagalan }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_kegagalan += $persentase_kegagalan, 2, '.', '') }}</td>
                 <td>{{ $totalDropout }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_dropout += $persentase_dropout, 2, '.', '') }}</td>
                 <td>{{ $totalPusMiskinBerKb }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_pus_miskin += $persentase_pus_miskin, 2, '.', '') }}</td>
                 <td>{{ $totalPus4TBerKb }}</td>
-                <td>-</td>
+                <td>{{ number_format($totalpersentase_pus_4t += $persentase_pus_4t, 2, '.', '') }}</td>
                 <td>{{ $totalPenerimaanPil }}</td>
                 <td>{{ $totalPenerimaanSuntik }}</td>
                 <td>{{ $totalPenerimaanAkdr }}</td>
