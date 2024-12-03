@@ -163,7 +163,7 @@
                     $pus4T = App\Models\Sasaran::where('id_puskesmas', $puskesmas)
                         ->where('id_kelurahan', $item->id)
                         ->sum('pus_4t');
-                    $kbAktif = App\Models\EkseptorItem::where('id_kelurahan', $item->id)
+                    $kbAktif = App\Models\AkseptorItem::where('id_kelurahan', $item->id)
                         ->whereMonth('tanggal_pengunaan', $bulan)
                         ->whereYear('tanggal_pengunaan', $tahun)
                         ->count();
