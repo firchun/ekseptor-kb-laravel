@@ -166,8 +166,8 @@
                     $kbAktif = App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                         $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                     })
-                        ->whereMonth('tanggal_pengunaan', $bulan)
-                        ->whereYear('tanggal_pengunaan', $tahun)
+                        ->whereMonth('tanggal_penggunaan', $bulan)
+                        ->whereYear('tanggal_penggunaan', $tahun)
                         ->count();
                     $komplikasi = App\Models\Pelayanan::where('id_puskesmas', $puskesmas)
                         ->where('id_kelurahan', $item->id)
