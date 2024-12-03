@@ -26,7 +26,6 @@ class PelayananController extends Controller
             ->addColumn('action', function ($pelayanan) {
                 return view('pelayanan.components.actions', compact('pelayanan'));
             })
-
             ->rawColumns(['action'])
             ->make(true);
     }
