@@ -259,89 +259,79 @@
                         ->whereYear('tanggal_penggunaan', $tahun)
                         ->where('penggunaan', 'kndm')
                         ->count();
-                    //kondisi sebelumnya
-                    if ($bulan == 1) {
-                        $bulan_sebelumnya = 12;
-                        $tahun_sebelumnya = $tahun - 1;
-                    } else {
-                        $bulan_sebelumnya = $bulan - 1;
-                        $tahun_sebelumnya = $tahun;
-                    }
+
+                    //ambil data sebelumnya
+                    $tahun_sebelumnya = $tahun - 3; // Tentukan tahun awal (3 tahun sebelumnya)
+                    $tanggal_awal = Carbon\Carbon::create($tahun_sebelumnya, 1, 1); // 1 Januari tahun sebelumnya
+                    $tanggal_akhir = Carbon\Carbon::create($tahun, $bulan, 1)->subDay(); // Akhir bulan sebelum bulan berjalan
+
                     $sisaPilSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })
-                            ->whereMonth('tanggal', $bulan_sebelumnya)
-                            ->whereYear('tanggal', $tahun_sebelumnya)
+                            ->whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])
                             ->sum('terima_pil') -
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                            ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                            ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                             ->where('penggunaan', 'pil')
                             ->count();
+
                     $sisaSuntikSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })
-                            ->whereMonth('tanggal', $bulan_sebelumnya)
-                            ->whereYear('tanggal', $tahun_sebelumnya)
+                            ->whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])
                             ->sum('terima_suntik') -
                         (App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                            ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                            ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                             ->where('penggunaan', 'suntik_1bln')
                             ->count() +
                             App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                                 $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                             })
-                                ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                                ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                                ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                                 ->where('penggunaan', 'suntik_3bln')
                                 ->count());
+
                     $sisaAkdrSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
                             })
-                            ->whereMonth('tanggal', $bulan_sebelumnya)
-                            ->whereYear('tanggal', $tahun_sebelumnya)
+                            ->whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])
                             ->sum('terima_akdr') -
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                            ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                            ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                             ->where('penggunaan', 'akdr')
                             ->count();
 
                     $sisaImplnSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
-                            ->whereMonth('tanggal', $bulan_sebelumnya)
-                            ->whereYear('tanggal', $tahun_sebelumnya)
+                            ->whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])
                             ->sum('terima_impln') -
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                            ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                            ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                             ->where('penggunaan', 'impln')
                             ->count();
+
                     $sisaKndmSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
-                            ->whereMonth('tanggal', $bulan_sebelumnya)
-                            ->whereYear('tanggal', $tahun_sebelumnya)
+                            ->whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])
                             ->sum('terima_kdm') -
                         App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use ($item, $puskesmas) {
                             $query->where('id_kelurahan', $item->id)->where('id_puskesmas', $puskesmas);
                         })
-                            ->whereMonth('tanggal_penggunaan', $bulan_sebelumnya)
-                            ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
+                            ->whereBetween('tanggal_penggunaan', [$tanggal_awal, $tanggal_akhir])
                             ->where('penggunaan', 'kndm')
                             ->count();
 
