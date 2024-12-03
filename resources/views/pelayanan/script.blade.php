@@ -10,8 +10,10 @@
                         data: 'id',
                         name: 'id'
                     },
-
-
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
                     {
                         data: 'komplikasi',
                         name: 'komplikasi'
@@ -61,6 +63,7 @@
                         $('#formDropout').val(response.dropout);
                         $('#formPusMiskin').val(response.pus_miskin);
                         $('#formPus4T').val(response.pus_4t);
+                        $('#formTanggal').val(response.created_at);
                         $('#customersModal').modal('show');
                     },
                     error: function(xhr) {

@@ -29,6 +29,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Tanggal</th>
                                 <th>Komplikasi</th>
                                 <th>Kegagalan</th>
                                 <th>Drop Out</th>
@@ -41,6 +42,7 @@
                         <tfoot>
                             <tr>
                                 <th>ID</th>
+                                <th>Tanggal</th>
                                 <th>Komplikasi</th>
                                 <th>Kegagalan</th>
                                 <th>Drop Out</th>

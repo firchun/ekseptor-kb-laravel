@@ -50,6 +50,7 @@ class PelayananController extends Controller
             'dropout' => $request->input('dropout'),
             'pus_miskin' => $request->input('pus_miskin'),
             'pus_4t' => $request->input('pus_4t'),
+            'created_at' => $request->input('created_at') ?? now(),
         ];
 
         if ($request->filled('id')) {

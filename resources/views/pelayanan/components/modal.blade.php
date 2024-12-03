@@ -52,6 +52,10 @@
                         <input type="number" class="form-control" id="formPus4T" name="pus_4t" value="0"
                             required>
                     </div>
+                    <div class="mb-3">
+                        <label for="formTanggalCreate" class="form-label">Tanggal</label>
+                        <input type="datetime-local" class="form-control" id="formTanggal" name="created_at">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -108,6 +112,11 @@
                         <label for="formPus4TCreate" class="form-label">Pus 4T</label>
                         <input type="number" class="form-control" id="formPus4TCreate" name="pus_4t"
                             value="0" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formTanggalCreate" class="form-label">Tanggal</label>
+                        <input type="datetime-local" class="form-control" id="formTanggalCreate" name="created_at"
+                            value="{{ now()->format('Y-m-d\TH:i') }}">
                     </div>
                 </form>
             </div>

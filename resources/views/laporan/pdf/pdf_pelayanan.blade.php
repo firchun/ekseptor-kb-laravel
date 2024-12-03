@@ -249,7 +249,7 @@
                     })
                         ->whereMonth('tanggal_penggunaan', $bulan)
                         ->whereYear('tanggal_penggunaan', $tahun)
-                        ->whereIn('penggunaan', ['suntik_1bln'])
+                        ->whereIn('penggunaan', 'suntik_1bln')
                         ->count();
                     $penggunaanSuntik3Bln = App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use (
                         $item,
@@ -259,7 +259,7 @@
                     })
                         ->whereMonth('tanggal_penggunaan', $bulan)
                         ->whereYear('tanggal_penggunaan', $tahun)
-                        ->whereIn('penggunaan', ['suntik_3bln'])
+                        ->whereIn('penggunaan', 'suntik_3bln')
                         ->count();
 
                     $penggunaanAkdr = App\Models\AkseptorItem::whereHas('ekseptor', function ($query) use (
