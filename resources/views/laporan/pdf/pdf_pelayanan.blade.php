@@ -347,6 +347,7 @@
 
                     //sisa sebenarnya
                     $sisaPil =
+                        $sisaPilSebelumnya +
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
@@ -362,6 +363,7 @@
                             ->where('penggunaan', 'pil')
                             ->count();
                     $sisaSuntik =
+                        $sisaSuntikSebelumnya +
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
@@ -384,6 +386,7 @@
                                 ->where('penggunaan', 'suntik_3bln')
                                 ->count());
                     $sisaAkdr =
+                        $sisaAkdrSebelumnya +
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
@@ -400,6 +403,7 @@
                             ->count();
 
                     $sisaImpln =
+                        $sisaImplnSebelumnya +
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereMonth('tanggal', $bulan)
                             ->whereYear('tanggal', $tahun)
@@ -412,6 +416,7 @@
                             ->where('penggunaan', 'impln')
                             ->count();
                     $sisaKndm =
+                        $sisaKndmSebelumnya +
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereMonth('tanggal', $bulan)
                             ->whereYear('tanggal', $tahun)
