@@ -280,7 +280,7 @@
                             ->whereYear('tanggal_penggunaan', $tahun_sebelumnya)
                             ->where('penggunaan', 'pil')
                             ->count();
-                    $sisaSuntikSuntik =
+                    $sisaSuntikSebelumnya =
                         App\Models\Pemantauan::where('id_kelurahan', $item->id)
                             ->whereHas('kelurahan', function ($query) use ($puskesmas) {
                                 $query->where('id_puskesmas', $puskesmas);
